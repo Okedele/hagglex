@@ -1,7 +1,5 @@
-import { IMetadata } from './interfaces/metadata.interface';
 import { UrlService } from './url/url.service';
-import { GetMetadataDto } from './url/dto/get-metatdata.dto';
-import { Body, CacheInterceptor, Controller, Get, Post, UseInterceptors } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -14,11 +12,5 @@ export class AppController {
   @Get()
   getHello(): string {
     return this.appService.getHello();
-  }
-
-  @UseInterceptors(CacheInterceptor)
-  @Post('/metadata')
-  async getMetadata(@Body() getMetadataDTO: GetMetadataDto): Promise<IMetadata> {
-    return await this.urlService.run(getMetadataDTO)
   }
 }
