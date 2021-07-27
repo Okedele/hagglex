@@ -14,7 +14,9 @@ import { GraphQLModule } from '@nestjs/graphql';
       max: 100,
     }),
     GraphQLModule.forRoot({
-      autoSchemaFile: true
+      autoSchemaFile: true,
+      introspection: true,
+      playground: true
     })
   ],
   controllers: [AppController],
