@@ -1,5 +1,3 @@
-import { UseInterceptors, CacheInterceptor } from '@nestjs/common';
-import { GetMetadataDto } from './dto/input/get-metatdata.dto';
 import { IMetadata } from './../interfaces/metadata.interface';
 import { UrlService } from './url.service';
 import { Metadata } from './models/metadata';
@@ -11,8 +9,8 @@ export class UrlResolver {
 
   @Query(() => Metadata)
   async fetchMetadata(
-    @Args('getMetadataDTO') getMetadataDTO: GetMetadataDto,
+    @Args('url') url: string,
   ): Promise<IMetadata> {
-    return await this.urlsService.getMetadata(getMetadataDTO);
+    return await this.urlsService.getMetadata(url);
   }
 }
